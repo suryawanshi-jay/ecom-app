@@ -22,10 +22,19 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
+            "styles": [              
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "src/styles.css"             
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",              
+              "src/assets/js/jquery.scrollUp.min.js",
+	            "src/assets/js/price-range.js",
+              "src/assets/js/jquery.prettyPhoto.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {

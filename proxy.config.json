@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+      "target": "http://stage.ugollc.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }
