@@ -8,9 +8,6 @@ export class CategoriesService {
   }
   // Get categories
   getCategories(){
-    this.httpClient.get('/api/v1/product/category?access_token=f0q17tZSUDVusmW4OwzGjMH6pFaLTn7RzqHXdx4I')
-    .subscribe(data => {
-      console.log(data);
-    })
+    return this.httpClient.get(`/api/v1/product/category?access_token=${sessionStorage.getItem('authToken')}`);    
   }
 }

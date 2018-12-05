@@ -7,8 +7,8 @@
                   <h2>Categories</h2>
                   <div class="brands-name">
                     <ul class="nav nav-pills nav-stacked" *ngFor="let cat of categories">                      
-                      <li><a [routerLink]="['/category', cat.name]"> 
-                            <span class="pull-right">({{cat.product_count}})</span>{{cat.name}}
+                      <li><a [routerLink]="['/category', cat.category_id]"> 
+                            <span class="pull-right">({{cat.total_products}})</span>{{cat.name}}
                           </a>
                       </li>                      
                     </ul>
@@ -21,7 +21,7 @@
             </div>   
             
             <!-- show products listint  -->          
-            <app-product [categoryName]="categoryName"></app-product>        
+            <app-product [categoryId]="categoryId"></app-product>        
             <!-- End products listint  -->
         </div>
     </div>

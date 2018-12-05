@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriesService } from './categories.service';
-
+import { AuthenticationService } from '../../shared/_services/authentication.service';
 
 @Component({
   selector: 'app-category',
@@ -11,46 +11,31 @@ import { CategoriesService } from './categories.service';
 export class CategoryComponent implements OnInit {
 
   categories: any;
-  categoryName:any;
-  test:boolean = false;
-  constructor(private activatedRoute: ActivatedRoute,
-    private catService: CategoriesService) { }
+  categoryId:any;  
+  constructor(
+      private activatedRoute: ActivatedRoute,
+      private catService: CategoriesService,
+      private authService: AuthenticationService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit() {    
     this.getCategoryDetails();
-    this.getCategories();
-    this.categories = [
-        {
-          'name':'Beverages',
-          'product_count':40
-        },
-        {
-          'name':'Food',
-          'product_count':100
-        },
-        {
-          'name':'Household',
-          'product_count':50
-        },
-        {
-          'name':'Newest Arrivals',
-          'product_count':20
-        }
-      ];
+    this.getCategories();   
   }
 
-  // Getcategories
+  // Get categoryId
   getCategoryDetails(){
-    this.activatedRoute.params.subscribe(params => {  
-      this.test = true;    
-      let category_id = params['category_id'];
-      this.categoryName = (category_id == undefined) ? 'Beverages' : category_id;      
-  });
+      this.activatedRoute.params.subscribe(params => {        
+        let category_id = params['category_id'];
+        this.categoryId = (category_id == undefined) ? '90' : category_id;      
+      });
   }
-
+  // get all categories
   getCategories(){
-    this.catService.getCategories();
-  }
+    this.catService.getCategories().subscribe(category => {
+      this.categories = category;  
+      this.categories = this.categories.categories;      
+    });
+  }  
   
-
 }

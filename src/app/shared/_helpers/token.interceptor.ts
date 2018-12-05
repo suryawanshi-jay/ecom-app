@@ -3,16 +3,18 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable} from 'rxjs';
 
 export class TokenInterceptor implements HttpInterceptor{
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {    
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {   
+        console.log("I am intercepted"); 
         // Clone requst and set http inteceptor
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));       
-        if(currentUser && currentUser.token){            
+        let authToken = sessionStorage.getItem('authToken');  
+        if(authToken == undefined){     
+            console.log("Inside header settings");       
             request = request.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${currentUser.token}`
+                    Authorization: 'Basic VWdvQXV0aDMyMTY1NDpSVGdPQnN0QUJ4MjN4OTgxd3BvQQ=='
                 }
             });
         }
         return next.handle(request);
     }
-}
+}   
