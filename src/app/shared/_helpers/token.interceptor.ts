@@ -4,7 +4,7 @@ import { Observable} from 'rxjs';
 
 export class TokenInterceptor implements HttpInterceptor{
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {   
-        console.log("I am intercepted"); 
+        //console.log("I am intercepted"); 
         // Clone requst and set http inteceptor
         let authToken = sessionStorage.getItem('authToken');  
         if(authToken == undefined){     

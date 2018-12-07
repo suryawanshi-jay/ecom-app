@@ -1,9 +1,18 @@
   <!-- Right side column started -->
   <div class="col-sm-9 padding-right">
     <div class="features_items"><!--features_items-->
-      <h2 class="title text-center">{{categoryId}}</h2>
-
-      <div class="col-sm-4" *ngFor="let product of products">
+      <!-- <h2 class="title text-center">{{categoryId}}</h2>    -->
+      <div class="col-sm-11 product-view">
+        <div class="col-sm-4">
+         <div class="choose">
+           <ul class="nav nav-pills nav-justified">
+              <li><a href="javascript:void(0)" (click) = "showProductListView()"><i class="fa fa-th"></i>List</a></li>
+             <li><a href="javascript:void(0)" (click) = "showProductGridView()"><i class="fa fa-list-alt"></i>Grid</a></li>             
+           </ul>
+         </div>
+        </div>     
+       </div> 
+      <div class="{{viewType}}" *ngFor="let product of products">
         <div class="product-image-wrapper">
           <div class="single-products">
               <div class="productinfo text-center">
@@ -16,7 +25,7 @@
                 <div class="overlay-content">
                   <h2>{{product.price}}</h2>
                   <p><a href="">{{product.name}}</a></p>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                  <a href="javascript:void(0)" class="btn btn-default add-to-cart" (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
               </div>
           </div>
